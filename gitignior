@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Images (optional ignore if raw files are large)
+*.psd
+*.tiff
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Generated files
+*.log
+*.tmp
+
+# Secrets
+.env
+config.json
+
+# Exports
+exports/
+output/
