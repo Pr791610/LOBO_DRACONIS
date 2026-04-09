@@ -1,11 +1,12 @@
 # LOBO_DRACONIS
-MANASIA Dragon Core – Professional digital art system with certified artwork, QR-based access, payment integration and authenticity documentation. 
-   -<https://buy.stripe.com/3cI28sbdS0gi2T32z5cjS0b> 
-   -<https://buy.stripe.com/9B69AUeq43subpz4HdcjS0d>  
-   -<https://buy.stripe.com/5kQcN62HmbZ02T31v1cjS04>   
-   -
+MANASIA Dragon Core – Professional digital art system with certified artwork, QR-based access, payment integration and authenticity documentation.   
+    -
+<https://buy.stripe.com/3cI28sbdS0gi2T32z5cjS0b>  
+    -<https://buy.stripe.com/9B69AUeq43subpz4HdcjS0d>   
+    -<https://buy.stripe.com/5kQcN62HmbZ02T31v1cjS04>    
+    -
 <https://buy.stripe.com/8x2bJ23LqbZ03X73D9cjS0h>
-   -
+    -
 <https://buy.stripe.com/eVq5kE95K0gi0KVehNcjS0i>
    -
 <https://buy.stripe.com/cNiaEY3Lqfbc8dnehNcjS0j>
@@ -20,3 +21,4 @@ MANASIA Dragon Core – Professional digital art system with certified artwork, 
    -
 <https://buy.stripe.com/6oU9AUdm05AC51b8XtcjS0q>
    -
+
