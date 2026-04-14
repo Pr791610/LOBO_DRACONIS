@@ -19,12 +19,12 @@ MANASIA Dragon Core – Professional digital art system with certified artwork, 
 <https://buy.stripe.com/dRmbJ23LqbZ09hr1v1cjS0p>
 -
 <https://buy.stripe.com/6oU9AUdm05AC51b8XtcjS0q>
- -
+   -
 <https://buy.stripe.com/eVqbJ20zeaUWfFP4HdcjS0x>
- -https://buy.stripe.com/8x2bJ22Hm1kmgJT5LhcjS0z
- -
+   -https://buy.stripe.com/8x2bJ22Hm1kmgJT5LhcjS0z
+   -
 https://buy.stripe.com/4gM00kgyc2oqdxH7TpcjS0A
- -
+   -
 https://buy.stripe.com/dRm5kEeq46EG2T3ehNcjS0B
  -
 https://buy.stripe.com/5kQ4gAfu8bZ0eBL8XtcjS0D
