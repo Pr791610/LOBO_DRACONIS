@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MANASIA Dragon Core - Collezione d'arte certificata dai musei. Opere autenticate con QR. Pagamenti Stripe sicuri.">
+    <meta name="keywords" content="Arte, Dragon Art, Opera d'arte, Collezione Museum, Premium Art, Deacons Lobo">
+    <meta name="author" content="Deacons Lobo - MANASIA Dragon Core">
+    <title>MANASIA Dragon Core - Collezione Artistica Certificata</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background: linear-gradient(135deg, #0a0e27 0%, #1a0033 100%);
+        color: #fff;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+    
+    /* HEADER - LUXURY DESIGN */
+    header {
+        padding: 60px 20px;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(26,0,51,0.9) 100%);
+        border-bottom: 2px solid rgba(212, 175, 55, 0.6);
+        box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+        position: relative;
+    }
+    
+    header::before {
+        content: "✦";
+        display: block;
+        font-size: 30px;
+        color: #d4af37;
+        margin-bottom: 15px;
+    }
+    
+    header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #d4af37 0%, #fff 50%, #d4af37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    
+    header p {
+        color: #bbb;
+        font-size: 16px;
+        font-weight: 300;
+        margin-top: 10px;
+        letter-spacing: 1px;
+    }
+    
+    .tagline {
+        color: #d4af37;
+        font-size: 14px;
+        margin-top: 15px;
+        font-style: italic;
+        font-weight: 500;
+    }
+    
+    /* CONTROLS - SEARCH & FILTER */
+    .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        padding: 30px;
+        background: rgba(20, 20, 50, 0.8);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        backdrop-filter: blur(10px);
+    }
+    
+    .controls input,
+    .controls select {
+        padding: 12px 18px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: 8px;
+        background: rgba(30, 30, 60, 0.9);
+        color: #fff;
+        font-size: 14px;
+        outline: none;
+        transition: 0.3s;
+    }
+    
+    .controls input:focus,
+    .controls select:focus {
+        border-color: #d4af37;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+    
+    .controls button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #d4af37, #ffd700);
+        color: #000;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .controls button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+    }
+    
+    .controls button.reset {
+        background: rgba(212, 175, 55, 0.2);
+        border: 1px solid #d4af37;
+        color: #d4af37;
+    }
+    
+    /* STATS */
+    .stats {
+        text-align: center;
+        padding: 20px;
+        background: rgba(20, 20, 50, 0.6);
+        color: #d4af37;
+        font-size: 16px;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    /* GALLERY */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        padding: 60px 30px;
+        max-width: 1800px;
+        margin: auto;
+    }
+    
+    .card {
+        background: linear-gradient(135deg, rgba(30, 10, 60, 0.8), rgba(50, 20, 80, 0.8));
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+    
+    .card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3);
+        border-color: rgba(212, 175, 55, 0.8);
+    }
+    
+    .card-image-container {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+    }
+    
+    .card-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+        filter: brightness(0.95) contrast(1.1);
+    }
+    
+    .card:hover .card-image-container img {
+        transform: scale(1.08);
+    }
+    
+    .badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        padding: 10px 18px;
+        background: linear-gradient(135deg, #d4af37, #ffd700);
+        color: #000;
+        font-size: 12px;
+        font-weight: 700;
+        border-radius: 30px;
+        z-index: 10;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+    
+    .certified-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        background: rgba(212, 175, 55, 0.2);
+        border: 2px solid #d4af37;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        z-index: 10;
+    }
+    
+    /* CARD CONTENT */
+    .card-content {
+        padding: 30px;
+        background: linear-gradient(180deg, rgba(20, 0, 40, 0.8), rgba(10, 0, 30, 0.9));
+    }
+    
+    .card-content h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #d4af37;
+        letter-spacing: 1px;
+    }
+    
+    .card-content h3 {
+        font-size: 0.9rem;
+        color: #bbb;
+        font-weight: 400;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    
+    .artist {
+        color: #aaa;
+        margin-bottom: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .description {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #ddd;
+        margin-bottom: 18px;
+        font-style: italic;
+    }
+    
+    .price-section {
+        margin: 20px 0;
+        padding: 15px;
+        background: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid #d4af37;
+        border-radius: 8px;
+    }
+    
+    .price {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: #d4af37;
+        font-weight: 700;
+        margin: 0;
+    }
+    
+    .certificate {
+        font-size: 12px;
+        color: #999;
+        margin-top: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* QR CODE */
+    .qr-box {
+        text-align: center;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px dashed rgba(212, 175, 55, 0.3);
+        border-radius: 12px;
+        margin: 18px 0;
+    }
+    
+    .qr-label {
+        font-size: 11px;
+        color: #999;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .qr-box img {
+        width: 120px;
+        height: 120px;
+        background: #fff;
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+    }
+    
+    /* BUY BUTTON */
+    .buy-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 16px;
+        background: linear-gradient(135deg, #d4af37, #ffd700);
+        color: #000;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 12px;
+        transition: all 0.3s;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        border: none;
+        margin-top: 10px;
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+    
+    .buy-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+    }
+    
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 50px 20px;
+        color: #666;
+        font-size: 13px;
+        background: linear-gradient(180deg, rgba(10, 0, 30, 0.9), rgba(0, 0, 0, 0.95));
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        letter-spacing: 1px;
+        margin-top: 60px;
+    }
+    
+    footer p {
+        margin: 8px 0;
+    }
+    
+    .footer-gold {
+        color: #d4af37;
+        font-weight: 600;
+    }
+    
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
+        header h1 {
+            font-size: 2.2rem;
+        }
+        
+        .gallery {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 30px 15px;
+        }
+        
+        .card-image-container {
+            height: 280px;
+        }
+        
+        .price {
+            font-size: 2rem;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>MANASIA DRAGON CORE</h1>
+    <p>Collezione d'Arte Certificata dai Musei</p>
+    <p class="tagline">Opere Autenticate con QR • Pagamenti Stripe Sicuri</p>
+</header>
+
+<!-- CONTROLS -->
+<div class="controls">
+    <input type="text" id="search" placeholder="🔍 Cerca opera..." onkeyup="searchArtworks()">
+    
+    <select id="filterCategory" onchange="filterCategory()">
+        <option value="ALL">Tutte le Categorie</option>
+        <option value="DRAGON">Dragon Series</option>
+        <option value="FANTASY">Fantasy</option>
+        <option value="ABSTRACT">Abstract</option>
+    </select>
+    
+    <button onclick="sortByName()">Ordina A-Z</button>
+    <button onclick="sortByDateNew()">Più Recenti</button>
+    <button onclick="resetFilters()" class="reset">Reset</button>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+    📊 Opere Disponibili: <span id="count">0</span> | 💰 Prezzo Unico: <span style="color: #ffd700;">€50</span>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery"></div>
+
+<!-- FOOTER -->
+<footer>
+    <p><span class="footer-gold">✦ MANASIA Dragon Core ✦</span></p>
+    <p>Collezione d'Arte di Deacons Lobo</p>
+    <p>© 2026 - Tutte le Opere Autenticate e Certificate</p>
+    <p>Pagamenti Sicuri Stripe | QR Authentication | Museum Certified</p>
+</footer>
+
+<script>
+const artworks = [
+    {
+        id: 1,
+        title: "Golden Dragon",
+        subtitle: "La Bestia d'Oro",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "DRAGON",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_1Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_1Pr791610001",
+        description: "L'opera iconica della serie Dragon. Una rappresentazione maestosa della bestia dorata, simbolo di potenza e eternità. Certificata e autenticata con QR."
+    },
+    {
+        id: 2,
+        title: "Dragon's Fire",
+        subtitle: "Il Fuoco del Drago",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "DRAGON",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_2Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_2Pr791610001",
+        description: "Energia primordiale e fuoco sacro. Un'opera che cattura l'essenza della forza drago in uno stile dinamico e ipnotizzante. Edizione limitata."
+    },
+    {
+        id: 3,
+        title: "Mystic Eye",
+        subtitle: "L'Occhio Mistico",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "FANTASY",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_3Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_3Pr791610001",
+        description: "Uno sguardo oltre il reale. Un'opera affascinante che combina elementi fantasy con una profondità metafisica. Autenticazione QR integrata."
+    },
+    {
+        id: 4,
+        title: "Cosmic Force",
+        subtitle: "Forza Cosmica",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "ABSTRACT",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_4Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_4Pr791610001",
+        description: "Energia dell'universo condensata in forma d'arte. Un capolavoro astratto che esplora la connessione tra il visibile e l'invisibile."
+    },
+    {
+        id: 5,
+        title: "Dragon Crown",
+        subtitle: "La Corona del Drago",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "DRAGON",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_5Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_5Pr791610001",
+        description: "Regalità e dominio. L'opera che rappresenta il potere supremo del drago. Una composizione raffinata e elegante di straordinaria bellezza."
+    },
+    {
+        id: 6,
+        title: "Fantasy Realm",
+        subtitle: "Il Regno della Fantasia",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "FANTASY",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_6Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_6Pr791610001",
+        description: "Un mondo parallelo di magia e meraviglia. Opera che trasporta lo spettatore in dimensioni ignote e affascinanti."
+    },
+    {
+        id: 7,
+        title: "Abstract Dragon",
+        subtitle: "Drago Astratto",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "ABSTRACT",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_7Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_7Pr791610001",
+        description: "L'interpretazione astratta della forma drago. Colori vibranti e linee fluide che creano una danza di forme e significati."
+    },
+    {
+        id: 8,
+        title: "Dragon's Heart",
+        subtitle: "Il Cuore del Drago",
+        artist: "Deacons Lobo",
+        price: 50,
+        category: "DRAGON",
+        date: 2026,
+        image: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+        stripe: "https://buy.stripe.com/test_8Pr791610001",
+        qr: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://buy.stripe.com/test_8Pr791610001",
+        description: "L'essenza emotiva del drago. Un'opera intima e potente che rivela la vulnerabilità e la forza nascosta nel cuore della bestia."
+    }
+];
+
+let filteredArtworks = [...artworks];
+
+function renderArtworks(data = filteredArtworks) {
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = '';
+    
+    document.getElementById('count').innerText = data.length;
+    
+    data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        
+        card.innerHTML = `
+            <div class="card-image-container">
+                <div class="badge">${item.category}</div>
+                <div class="certified-badge">✓</div>
+                <img src="${item.image}" alt="${item.title}">
+            </div>
+            <div class="card-content">
+                <h2>${item.title}</h2>
+                <h3>${item.subtitle}</h3>
+                <div class="artist">👤 ${item.artist}</div>
+                <div class="description">${item.description}</div>
+                
+                <div class="price-section">
+                    <div class="price">€${item.price}</div>
+                    <div class="certificate">🔒 Certificato e Autenticato</div>
+                </div>
+                
+                <div class="qr-box">
+                    <div class="qr-label">QR Authentication Code</div>
+                    <img src="${item.qr}" alt="QR Code">
+                </div>
+                
+                <a href="${item.stripe}" target="_blank" class="buy-btn">
+                    💳 Acquista Ora
+                </a>
+            </div>
+        `;
+        
+        gallery.appendChild(card);
+    });
+}
+
+function searchArtworks() {
+    const value = document.getElementById('search').value.toLowerCase();
+    
+    filteredArtworks = artworks.filter(item =>
+        item.title.toLowerCase().includes(value) ||
+        item.subtitle.toLowerCase().includes(value) ||
+        item.category.toLowerCase().includes(value) ||
+        item.description.toLowerCase().includes(value)
+    );
+    
+    renderArtworks(filteredArtworks);
+}
+
+function filterCategory() {
+    const category = document.getElementById('filterCategory').value;
+    
+    if (category === 'ALL') {
+        filteredArtworks = [...artworks];
+    } else {
+        filteredArtworks = artworks.filter(item => item.category === category);
+    }
+    
+    renderArtworks(filteredArtworks);
+}
+
+function sortByName() {
+    filteredArtworks.sort((a, b) => a.title.localeCompare(b.title));
+    renderArtworks(filteredArtworks);
+}
+
+function sortByDateNew() {
+    filteredArtworks.sort((a, b) => b.date - a.date);
+    renderArtworks(filteredArtworks);
+}
+
+function resetFilters() {
+    document.getElementById('search').value = '';
+    document.getElementById('filterCategory').value = 'ALL';
+    filteredArtworks = [...artworks];
+    renderArtworks(filteredArtworks);
+}
+
+// Initial render
+renderArtworks();
+</script>
+
+</body>
+</html>
