@@ -256,8 +256,9 @@ artist:"Nikolche Manasiev",
 price:50,
 category:"PREMIUM",
 image:"https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200&auto=format&fit=crop",
-stripe: "https://buy.stripe.com/test_1",
-qr :"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data"https://buy.stripe.com/3cI28sbdS0gi2T32z5cjS0b"
+stripe: "https://photos.app.goo.gl/3z4ZQHuvkxCMPooB6",
+stripe: "https://buy.stripe.com/7sYeVe4Pu9QS2T3gpVcjS06",
+qr :"https://photos.app.goo.gl/3z4ZQHuvkxCMPooB6
 description:"Museum certified collector artwork with premium archival presentation and authenticated QR system."
 },
 {
