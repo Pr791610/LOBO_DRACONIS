@@ -385,6 +385,268 @@
 <header>
     <h1>MANASIA DRAGON CORE</h1>
     <p>Collezione d'Arte Certificata dai Musei</p>
+    
+    </div>
+   
+</a> <!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUSEUM PRO SYSTEM | FULL OS</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#050505;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* SIDEBAR */
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+height:100vh;
+width:240px;
+background:#0b0b0b;
+border-right:1px solid #222;
+padding:20px;
+}
+
+.sidebar h2{
+color:#d4af37;
+margin-bottom:20px;
+letter-spacing:2px;
+}
+
+.sidebar a{
+display:block;
+color:#fff;
+text-decoration:none;
+padding:10px;
+margin:6px 0;
+border-radius:8px;
+opacity:.8;
+cursor:pointer;
+}
+
+.sidebar a:hover{
+background:#1a1a1a;
+color:#d4af37;
+opacity:1;
+}
+
+/* MAIN */
+.main{
+margin-left:240px;
+padding:20px;
+}
+
+.header{
+padding:20px;
+text-align:center;
+}
+
+.header h1{
+color:#d4af37;
+font-size:42px;
+}
+
+/* SEARCH */
+.search{
+max-width:600px;
+margin:20px auto;
+}
+
+.search input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:none;
+background:#111;
+color:#fff;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(212,175,55,.2);
+border-radius:14px;
+padding:20px;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+border-color:#d4af37;
+}
+
+.card h3{
+color:#d4af37;
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:#111;
+padding:30px;
+border-radius:12px;
+max-width:500px;
+width:90%;
+border:1px solid #333;
+}
+
+.close{
+float:right;
+cursor:pointer;
+color:#d4af37;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.sidebar{
+position:relative;
+width:100%;
+height:auto;
+}
+.main{
+margin-left:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h2>MUSEUM PRO</h2>
+<a onclick="loadSection('D')">🎨 D ART</a>
+<a onclick="loadSection('MK')">📜 MK CERT</a>
+<a onclick="loadSection('ITMK')">📚 ITMK</a>
+<a onclick="loadSection('IT')">📖 IT BOOKS</a>
+<a onclick="loadSection('HUM')">🌍 HUM</a>
+<a onclick="loadSection('ARCHIVE')">🗂 ARCHIVE</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<div class="header">
+<h1>MUSEUM PRO SYSTEM</h1>
+<p>Full Digital Museum OS • MK • ITMK • D • HUM</p>
+</div>
+
+<div class="search">
+<input type="text" id="search" placeholder="Search MK073, ITMK027, D001..." onkeyup="filterData()">
+</div>
+
+<div class="grid" id="grid"></div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">✖</span>
+<div id="modalText"></div>
+</div>
+</div>
+
+<script>
+
+const data = {
+D:[
+{id:"D001",title:"Artwork 001"},
+{id:"D002",title:"Artwork 002"}
+],
+MK:[
+{id:"MK073",title:"Certificate 073"}
+],
+ITMK:[
+{id:"ITMK027",title:"Coupon 027"}
+],
+IT:[
+{id:"IT001",title:"Book 001"}
+],
+HUM:[
+{id:"H001",title:"Human Project"}
+],
+ARCHIVE:[
+{id:"PDF",title:"Documents"},
+{id:"QR",title:"Codes"},
+{id:"STRIPE",title:"Payments"}
+]
+};
+
+let current = "D";
+
+function loadSection(sec){
+current = sec;
+render(data[sec]);
+}
+
+function render(items){
+const grid = document.getElementById("grid");
+grid.innerHTML = "";
+
+items.forEach(i=>{
+const div = document.createElement("div");
+div.className="card";
+div.innerHTML = `<h3>${i.id}</h3><p>${i.title}</p>`;
+div.onclick = ()=>openModal(i);
+grid.appendChild(div);
+});
+}
+
+function filterData(){
+const val = document.getElementById("search").value.toLowerCase();
+const items = data[current].filter(i=>i.id.toLowerCase().includes(val));
+render(items);
+}
+
+function openModal(item){
+document.getElementById("modalText").innerHTML = `
+<h2 style='color:#d4af37'>${item.id}</h2>
+<p>${item.title}</p>
+<p>Status: ACTIVE</p>
+`;
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+// init
+render(data.D);
+
+</script>
+
+</body>
+</html></a><button onclick="sortByName()">Sertificat sistem</button>
+
+</div>
+    
     <p class="tagline">Opere Autenticate con QR • Pagamenti Stripe Sicuri</p>
 </header>
 
