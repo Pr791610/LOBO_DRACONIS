@@ -385,3 +385,27 @@ renderArtworks();
 
 </body>
 </html>
+...
+
+# HOW TO USE
+
+1. Copy EVERYTHING from <!DOCTYPE html> to </html>
+2. Open your existing INDEX.HTML
+3. Replace old code
+4. Save file
+5. Upload to GitHub
+6. Netlify auto deploy
+
+# IMPORTANT FOLDERS
+
+/images
+/qr
+
+# TO ADD NEW ARTWORKS
+
+Copy one artwork object inside:
+
+```javascript
+const artworks = [
+]
+```
